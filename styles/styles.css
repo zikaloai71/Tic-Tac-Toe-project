@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    margin-bottom: 10%;
+    font-family: 'Inconsolata', monospace;
+
+}
+h1 img{
+    width: 10%;
+}
+main{
+    display: flex;
+    width: 60%;
+    margin: auto;
+    flex-wrap:wrap ;
+}
+.x-color{
+    color: rgb(90, 180, 180) ;
+}
+.o-color{
+    color: rgb(168, 127, 22) ;
+}
+div{
+    background-color: rgb(42, 41, 41);
+    text-align: center;
+   padding: 3em 0em 5em 0em;
+   font-size: 30px;
+    width: 30%;
+    height: 30vh;
+    justify-content: space-around;
+    margin-right: 0.2em;
+    margin-top: 0.2em;
+    font-family: 'Inconsolata', monospace;
+
+  
+}
+#player-turn{
+margin-left: 40%;
+ font-size: 30px;
+font-weight: bold;
+font-family: 'Inconsolata', monospace;
+
+}
+#result{
+    margin-left: 40%;
+    font-size: 30px;
+    font-family: 'Inconsolata', monospace;
+  
+    color: rgb(20, 16, 16);
+}
+#restart{
+display: block;
+    width:30%;
+    height: 3em;
+    margin-top: 2em;
+    margin-left: 30em;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    background-color: rgb(151, 64, 64);
+    border-radius: 10px;
+    color: white;
+    font-size: 1em;
+    font-family: 'Inconsolata', monospace;
+
+}
