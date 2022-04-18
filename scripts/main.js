@@ -27,8 +27,9 @@ const game= document.getElementsByClassName('game')
 const cell = [...document.querySelectorAll("div")];
 let res = document.getElementById("result");
 let playerTurn = document.getElementById("player-turn");
-const restart=document.getElementById("restart")
-
+const playAgain=document.getElementById("play-again");
+const restart=document.getElementById("restart");
+const announce=document.getElementsByClassName('result');
 let cells = new GameBoard();
 let p1 = new PlayerOne();
 let p2 = new PlayerTwo();
@@ -62,14 +63,14 @@ function render() {
       else if (carry == p1.playerOne) {
         c.innerText = p2.playerTwo;
         c.classList.add('o-color');
-        playerTurn.innerText = `player ${p1.name}'s turn`;
+        playerTurn.innerText = `${p1.name} turn`;
         cells.gameBoard[cell.indexOf(c)] = c.innerText;
         
       }
        else {
         c.innerText = p1.playerOne;
         c.classList.add('x-color');
-        playerTurn.innerText = `player ${p2.name}'s turn`;
+        playerTurn.innerText = ` ${p2.name} turn`;
         cells.gameBoard[cell.indexOf(c)] = c.innerText;
       
       }
@@ -103,11 +104,15 @@ function result() {
     } 
     else if (a === b && b === c) {
       if (a == "X") {
-        res.innerText = `player ${p1.name} won`;
+        res.innerText = `CONGRATULATIONS ${p1.name} you won`;
+        game[0].classList.add('d-none');
+        announce[0].classList.remove('d-none');
         playerTurn.innerText = "";
        break;
       } else {
-        res.innerText = `player ${p2.name} won`;
+        res.innerText = `CONGRATULATIONS ${p2.name} you won`;
+        game[0].classList.add('d-none');
+        announce[0].classList.remove('d-none');
         playerTurn.innerText = "";
         break;
       }
@@ -116,22 +121,37 @@ function result() {
 else if(!cells.gameBoard.includes('')){
 res.innerText=" no one won TIE";
 playerTurn.innerText = "";
-
+game[0].classList.add('d-none');
+announce[0].classList.remove('d-none');
 }
  }
 
 }
-
 restart.addEventListener('click',()=>{
+  cell.forEach((c)=>{
+
+      c.innerText="";
+      cells.gameBoard=["", "", "", "", "", "", "", "", ""]
+      carry="";
+      c.classList.remove('o-color')
+      playerTurn.innerText = `${p1.name} turn`;
+     
+  })
+  
+  })
+
+playAgain.addEventListener('click',()=>{
     cell.forEach((c)=>{
 
         c.innerText="";
         cells.gameBoard=["", "", "", "", "", "", "", "", ""]
         carry="";
         c.classList.remove('o-color')
-        playerTurn.innerText = `player ${p1.name} turn`
+        playerTurn.innerText = `${p1.name} turn`
         res.innerText="";
-
+        oneVsOne[0].classList.remove('d-none');
+        game[0].classList.add('d-none');
+        announce[0].classList.add('d-none');
     })
     
     })
