@@ -4,9 +4,11 @@ function GameBoard() {
 
 function PlayerOne() {
   this.playerOne = "X";
+  this.name;
 }
 function PlayerTwo() {
   this.playerTwo = "O";
+  this.name;
 }
 
 let carry = "";
@@ -17,16 +19,34 @@ function gameFlow() {
     return (carry = p2.playerTwo);
   }
 }
-
+let pl1= document.getElementById('p1')
+let pl2= document.getElementById('p2')
+const oneVsOne=document.getElementsByClassName('one-vs-one')
+const startGame= document.getElementById('start-game')
+const game= document.getElementsByClassName('game')
 const cell = [...document.querySelectorAll("div")];
 let res = document.getElementById("result");
 let playerTurn = document.getElementById("player-turn");
 const restart=document.getElementById("restart")
+
 let cells = new GameBoard();
 let p1 = new PlayerOne();
 let p2 = new PlayerTwo();
 
+startGame.addEventListener('click',(e)=>{
+  e.preventDefault();
+ p1.name=pl1.value;
+ p2.name=pl2.value;
+ playerTurn.innerText = `player ${p1.name}'s turn`;
+  if(p1.name=== "" || p2.name=== ""){
+    return 
+  }
+  else{
+oneVsOne[0].classList.add('d-none');
+game[0].classList.remove('d-none');
 
+  }
+})
     
 
 
@@ -34,21 +54,22 @@ function render() {
   cell.forEach((c) => {
     c.addEventListener("click", () => {
       gameFlow();
-      playerTurn.innerText = `player ${carry}'s turn`;
-      if (c.innerText == carry) {
+    
+      if (c.innerText == carry || c.innerText != "") {
          playerTurn.innerText = `play in empty tile`;
-         carry=`${c.innerText}`;
          return gameFlow();
       } 
       else if (carry == p1.playerOne) {
         c.innerText = p2.playerTwo;
         c.classList.add('o-color');
+        playerTurn.innerText = `player ${p1.name}'s turn`;
         cells.gameBoard[cell.indexOf(c)] = c.innerText;
         
       }
        else {
         c.innerText = p1.playerOne;
         c.classList.add('x-color');
+        playerTurn.innerText = `player ${p2.name}'s turn`;
         cells.gameBoard[cell.indexOf(c)] = c.innerText;
       
       }
@@ -82,11 +103,11 @@ function result() {
     } 
     else if (a === b && b === c) {
       if (a == "X") {
-        res.innerText = "player X's won";
+        res.innerText = `player ${p1.name} won`;
         playerTurn.innerText = "";
        break;
       } else {
-        res.innerText = "player O's won";
+        res.innerText = `player ${p2.name} won`;
         playerTurn.innerText = "";
         break;
       }
@@ -108,12 +129,13 @@ restart.addEventListener('click',()=>{
         cells.gameBoard=["", "", "", "", "", "", "", "", ""]
         carry="";
         c.classList.remove('o-color')
-        playerTurn.innerText = `player X's turn`
+        playerTurn.innerText = `player ${p1.name} turn`
         res.innerText="";
 
     })
     
     })
+
 
 
 

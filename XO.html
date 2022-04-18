@@ -12,10 +12,21 @@
 <title>tic tac toe</title>
 </head>
 <body>
-
+<section class="one-vs-one" >
+    <form action="">
+        <h1><img src="./images/5706044.png" alt="">
+            Tic Tac Toe</h1>
+        <label>player 1 name</label>
+        <input id="p1" type="text">
+        <label>player 2 name</label>
+        <input id="p2" type="text">
+        <button id="start-game">start game</button>
+    </form>
+</section>
+<section class="d-none game">
     <h1><img src="./images/5706044.png" alt="">
         Tic Tac Toe</h1>
-    <span id="player-turn">player X's turn</span>
+    <span id="player-turn"></span>
     <main>
     <div></div>
     <div></div>
@@ -29,7 +40,7 @@
 </main>
 <span id="result"></span>
 <button id="restart">RESTART</button>
-
+</section>
 
 
 
