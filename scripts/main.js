@@ -38,7 +38,7 @@ startGame.addEventListener('click',(e)=>{
   e.preventDefault();
  p1.name=pl1.value;
  p2.name=pl2.value;
- playerTurn.innerText = `player ${p1.name}'s turn`;
+ playerTurn.innerText = ` ${p1.name} turn`;
   if(p1.name=== "" || p2.name=== ""){
     return 
   }
