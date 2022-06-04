@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
     <link rel="icon" href="./images/5706044.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Roboto+Serif:ital,wght@1,100&family=Roboto:wght@400;900&family=Square+Peg&display=swap" rel="stylesheet">
-<title>tic tac toe</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Roboto+Serif:ital,wght@1,100&family=Roboto:wght@400;900&family=Square+Peg&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>tic tac toe</title>
 </head>
+
 <body>
-<section class="one-vs-one" >
-    <form action="">
+    <section class="one-vs-one">
+        <form action="">
+            <h1><img src="./images/5706044.png" alt="">
+                Tic Tac Toe</h1>
+            <label>player 1 name</label>
+            <input id="p1" type="text">
+            <label>player 2 name</label>
+            <input id="p2" type="text">
+            <button id="start-game">start game</button>
+        </form>
+    </section>
+    <section class="d-none game">
         <h1><img src="./images/5706044.png" alt="">
             Tic Tac Toe</h1>
-        <label>player 1 name</label>
-        <input id="p1" type="text">
-        <label>player 2 name</label>
-        <input id="p2" type="text">
-        <button id="start-game">start game</button>
-    </form>
-</section>
-<section class="d-none game">
-    <h1><img src="./images/5706044.png" alt="">
-        Tic Tac Toe</h1>
-    <span id="player-turn"></span>
-    <main>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</main>
-<button id="restart">RESTART</button>
-</section>
-<section class="result d-none">
-    <h2>GAME END</h2>
-    <h3 id="result"></h3>
-    <button id="play-again">PLAY AGAIN</button>
-</section>
+        <span id="player-turn"></span>
+        <main>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </main>
+        <button id="restart">RESTART</button>
+    </section>
+    <section class="result d-none">
+        <h2>GAME END</h2>
+        <h3 id="result"></h3>
+        <button id="play-again">PLAY AGAIN</button>
+    </section>
 
 
 
 
-<script src="./scripts/main.js"></script>
+    <script src="./scripts/main.js"></script>
 </body>
+
 </html>

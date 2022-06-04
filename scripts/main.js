@@ -19,66 +19,56 @@ function gameFlow() {
     return (carry = p2.playerTwo);
   }
 }
-let pl1= document.getElementById('p1')
-let pl2= document.getElementById('p2')
-const oneVsOne=document.getElementsByClassName('one-vs-one')
-const startGame= document.getElementById('start-game')
-const game= document.getElementsByClassName('game')
+let pl1 = document.getElementById("p1");
+let pl2 = document.getElementById("p2");
+const oneVsOne = document.getElementsByClassName("one-vs-one");
+const startGame = document.getElementById("start-game");
+const game = document.getElementsByClassName("game");
 const cell = [...document.querySelectorAll("div")];
 let res = document.getElementById("result");
 let playerTurn = document.getElementById("player-turn");
-const playAgain=document.getElementById("play-again");
-const restart=document.getElementById("restart");
-const announce=document.getElementsByClassName('result');
+const playAgain = document.getElementById("play-again");
+const restart = document.getElementById("restart");
+const announce = document.getElementsByClassName("result");
 let cells = new GameBoard();
 let p1 = new PlayerOne();
 let p2 = new PlayerTwo();
 
-startGame.addEventListener('click',(e)=>{
+startGame.addEventListener("click", (e) => {
   e.preventDefault();
- p1.name=pl1.value;
- p2.name=pl2.value;
- playerTurn.innerText = ` ${p1.name} turn`;
-  if(p1.name=== "" || p2.name=== ""){
-    return 
+  p1.name = pl1.value;
+  p2.name = pl2.value;
+  playerTurn.innerText = ` ${p1.name} turn`;
+  if (p1.name === "" || p2.name === "") {
+    return;
+  } else {
+    oneVsOne[0].classList.add("d-none");
+    game[0].classList.remove("d-none");
   }
-  else{
-oneVsOne[0].classList.add('d-none');
-game[0].classList.remove('d-none');
-
-  }
-})
-    
-
+});
 
 function render() {
   cell.forEach((c) => {
     c.addEventListener("click", () => {
       gameFlow();
-    
+
       if (c.innerText == carry || c.innerText != "") {
-         playerTurn.innerText = `play in empty tile`;
-         return gameFlow();
-      } 
-      else if (carry == p1.playerOne) {
+        playerTurn.innerText = `play in empty tile`;
+        return gameFlow();
+      } else if (carry == p1.playerOne) {
         c.innerText = p2.playerTwo;
-        c.classList.add('o-color');
+        c.classList.add("o-color");
         playerTurn.innerText = `${p1.name} turn`;
         cells.gameBoard[cell.indexOf(c)] = c.innerText;
-        
-      }
-       else {
+      } else {
         c.innerText = p1.playerOne;
-        c.classList.add('x-color');
+        c.classList.add("x-color");
         playerTurn.innerText = ` ${p2.name} turn`;
         cells.gameBoard[cell.indexOf(c)] = c.innerText;
-      
       }
-      
+
       result();
-    
     });
-  
   });
 }
 
@@ -101,64 +91,50 @@ function result() {
     let c = cells.gameBoard[winCondition[2]];
     if (a === "" || b === "" || c === "") {
       continue;
-    } 
-    else if (a === b && b === c) {
+    } else if (a === b && b === c) {
       if (a == "X") {
         res.innerText = `CONGRATULATIONS ${p1.name} you won`;
-        game[0].classList.add('d-none');
-        announce[0].classList.remove('d-none');
+        game[0].classList.add("d-none");
+        announce[0].classList.remove("d-none");
         playerTurn.innerText = "";
-       break;
+        break;
       } else {
         res.innerText = `CONGRATULATIONS ${p2.name} you won`;
-        game[0].classList.add('d-none');
-        announce[0].classList.remove('d-none');
+        game[0].classList.add("d-none");
+        announce[0].classList.remove("d-none");
         playerTurn.innerText = "";
         break;
       }
- 
+    } else if (!cells.gameBoard.includes("")) {
+      res.innerText = " no one won TIE";
+      playerTurn.innerText = "";
+      game[0].classList.add("d-none");
+      announce[0].classList.remove("d-none");
     }
-else if(!cells.gameBoard.includes('')){
-res.innerText=" no one won TIE";
-playerTurn.innerText = "";
-game[0].classList.add('d-none');
-announce[0].classList.remove('d-none');
+  }
 }
- }
+restart.addEventListener("click", () => {
+  cell.forEach((c) => {
+    c.innerText = "";
+    cells.gameBoard = ["", "", "", "", "", "", "", "", ""];
+    carry = "";
+    c.classList.remove("o-color");
+    playerTurn.innerText = `${p1.name} turn`;
+  });
+});
 
-}
-restart.addEventListener('click',()=>{
-  cell.forEach((c)=>{
-
-      c.innerText="";
-      cells.gameBoard=["", "", "", "", "", "", "", "", ""]
-      carry="";
-      c.classList.remove('o-color')
-      playerTurn.innerText = `${p1.name} turn`;
-     
-  })
-  
-  })
-
-playAgain.addEventListener('click',()=>{
-    cell.forEach((c)=>{
-
-        c.innerText="";
-        cells.gameBoard=["", "", "", "", "", "", "", "", ""]
-        carry="";
-        c.classList.remove('o-color')
-        playerTurn.innerText = `${p1.name} turn`
-        res.innerText="";
-        oneVsOne[0].classList.remove('d-none');
-        game[0].classList.add('d-none');
-        announce[0].classList.add('d-none');
-    })
-    
-    })
-
-
-
-
+playAgain.addEventListener("click", () => {
+  cell.forEach((c) => {
+    c.innerText = "";
+    cells.gameBoard = ["", "", "", "", "", "", "", "", ""];
+    carry = "";
+    c.classList.remove("o-color");
+    playerTurn.innerText = `${p1.name} turn`;
+    res.innerText = "";
+    oneVsOne[0].classList.remove("d-none");
+    game[0].classList.add("d-none");
+    announce[0].classList.add("d-none");
+  });
+});
 
 render();
-
