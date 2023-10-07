@@ -17,21 +17,28 @@
 
 <body>
     <section class="one-vs-one">
-        <form action="">
+        <form class="playersNameForm">
             <h1><img src="./images/5706044.png" alt="">
                 Tic Tac Toe</h1>
-            <label>player 1 name</label>
+            <div class="playerNameInpWrapper">
+            <label for="p1">player 1 name</label>
             <input id="p1" type="text">
-            <label>player 2 name</label>
-            <input id="p2" type="text">
-            <button id="start-game">start game</button>
+            </div>
+            <div class="playerNameInpWrapper">
+                <label for="p2">player 2 name</label>
+                <input id="p2" type="text">
+            </div>
+            <div  class="startButtonWrapper">
+                <button id="start-game">start game</button>
+            </div>
+        
         </form>
     </section>
     <section class="d-none game">
         <h1><img src="./images/5706044.png" alt="">
             Tic Tac Toe</h1>
-        <span id="player-turn"></span>
-        <main>
+        <p id="player-turn"></p>
+        <main class="tiles">
             <div></div>
             <div></div>
             <div></div>
@@ -49,10 +56,6 @@
         <h3 id="result"></h3>
         <button id="play-again">PLAY AGAIN</button>
     </section>
-
-
-
-
     <script src="./scripts/main.js"></script>
 </body>
 

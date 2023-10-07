@@ -24,7 +24,7 @@ let pl2 = document.getElementById("p2");
 const oneVsOne = document.getElementsByClassName("one-vs-one");
 const startGame = document.getElementById("start-game");
 const game = document.getElementsByClassName("game");
-const cell = [...document.querySelectorAll("div")];
+const cell = [...document.querySelectorAll(".tiles div")];
 let res = document.getElementById("result");
 let playerTurn = document.getElementById("player-turn");
 const playAgain = document.getElementById("play-again");
@@ -36,12 +36,13 @@ let p2 = new PlayerTwo();
 
 startGame.addEventListener("click", (e) => {
   e.preventDefault();
-  p1.name = pl1.value;
-  p2.name = pl2.value;
-  playerTurn.innerText = ` ${p1.name} turn`;
+ 
   if (p1.name === "" || p2.name === "") {
     return;
   } else {
+    p1.name = pl1.value;
+    p2.name = pl2.value;
+    playerTurn.innerText = ` ${p1.name} turn`;
     oneVsOne[0].classList.add("d-none");
     game[0].classList.remove("d-none");
   }
@@ -85,7 +86,7 @@ function result() {
   ];
 
   for (i = 0; i < winingConditions.length; i++) {
-    winCondition = winingConditions[i];
+    let winCondition = winingConditions[i];
     let a = cells.gameBoard[winCondition[0]];
     let b = cells.gameBoard[winCondition[1]];
     let c = cells.gameBoard[winCondition[2]];
@@ -106,6 +107,7 @@ function result() {
         break;
       }
     } else if (!cells.gameBoard.includes("")) {
+      console.log("tie")
       res.innerText = " no one won TIE";
       playerTurn.innerText = "";
       game[0].classList.add("d-none");

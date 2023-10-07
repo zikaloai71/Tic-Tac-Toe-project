@@ -4,20 +4,40 @@
     padding: 0;
 }
 
+
 .one-vs-one {
     background-color: rgb(154, 63, 63);
     width: 100%;
     height: 100vh;
+}
+
+.playersNameForm{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+    margin: auto 0px;
 }
 
+.playerNameInpWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:50%
+}
+.startButtonWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:40%
+}
 input {
-    display: block;
-    width: 50%;
-    margin: 3em auto;
+    width: 100%;
+    margin: 1em auto;
     font-family: 'Inconsolata', monospace;
     font-weight: bold;
     font-size: large;
@@ -25,19 +45,17 @@ input {
     outline: none;
     border: 0px;
     border-radius: 10px;
+    padding: 1em;
 }
 
 label {
-    width: 100%;
-    margin-left: 43%;
     font-weight: bold;
     font-size: large;
     font-family: 'Inconsolata', monospace;
 }
 
 #start-game {
-    width: 30%;
-    margin-left: 35%;
+    width: 100%;
     outline: none;
     border: 0px;
     border-radius: 10px;
@@ -54,21 +72,15 @@ label {
 
 h1 {
     text-align: center;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     font-family: 'Inconsolata', monospace;
-
 }
 
 h1 img {
     width: 10%;
 }
 
-main {
-    display: flex;
-    width: 60%;
-    margin: auto;
-    flex-wrap: wrap;
-}
+
 
 .x-color {
     color: rgb(90, 180, 180);
@@ -78,42 +90,62 @@ main {
     color: rgb(168, 127, 22);
 }
 
-div {
+.tiles{
+    display: flex;
+    width:90%;
+    margin:auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.tiles div {
     background-color: rgb(42, 41, 41);
     text-align: center;
-    padding: 3em 0em 5em 0em;
-    font-size: 30px;
-    width: 30%;
-    height: 30vh;
-    justify-content: space-around;
-    margin-right: 0.2em;
+    font-size: 2rem;
+    width: 32%;
+    height: 8rem;
     margin-top: 0.2em;
     font-family: 'Inconsolata', monospace;
-
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.tiles div:nth-child(1) {
+   
+    border-radius: 15px 0px 0px 0px;
+}  
+.tiles div:nth-child(3) {
+   
+    border-radius: 0px 15px 0px 0px;
+}   
+.tiles div:nth-child(7) {
+  
+    border-radius: 0px 0px 0px 15px;
+}  
+
+.tiles div:nth-child(9) {
+    
+    border-radius: 0px 0px 15px 0px;
+}   
+
+
+
 #player-turn {
-    margin-left: 40%;
     font-size: 30px;
     font-weight: bold;
     font-family: 'Inconsolata', monospace;
-
+    text-align: center;
 }
 
 .result {
     height: 100vh;
     background-color: hotpink;
-
-
 }
 
 #result {
-
     text-align: center;
     font-size: 30px;
     font-family: 'Inconsolata', monospace;
-
     color: rgb(20, 16, 16);
 }
 
@@ -142,3 +174,11 @@ h2 {
     font-family: 'Inconsolata', monospace;
 
 }
+
+@media screen and (min-width: 768px) {
+    .tiles {
+        width: 50%;
+     
+    }
+}
+    
